@@ -4,23 +4,16 @@
 {% block title %}Flasky{% endblock %}
 
 {% block page_content %}
-<!--
 
 <div>
-	<form method='POST'>
-		{{ form.name.label }} {{ form.name(id='my-text-field') }}
-		{{ form.submit() }}
-	</form>
+	<h1>
+		Hello, 
+		{% if current_user.is_authenticated %}
+		{{ current_user.username }}
+		{% else %}
+		Stranger
+		{% endif %}
+	</h1>
 </div>
-Forms can be used this way, alternative and better way is to use bootstrap/wtf.html as shown below
--->
-<div>
-	<h1>Hello, {% if name %}{{ name }}{% else %}Stranger{% endif %}</h1>
-	{% if not known %}
-	<p>Pleased to know you</p>
-	{% else %}
-	<p>Happy to see you again</p>
-	{% endif %}
-</div>
-{{ wtf.quick_form(form) }}
+
 {% endblock %}

@@ -7,12 +7,11 @@ from ..models import User
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
+	return render_template('index.html')
+	"""
 	form = NameForm()
 	if form.validate_on_submit():
-		print form.name.data
 		user = User.query.filter_by(username=form.name.data).first()
-		print str(User.query.filter_by(username=form.name.data))
-		print user
 		if user is None:
 			user = User(username=form.name.data)
 			db.session.add(user)
@@ -28,3 +27,4 @@ def index():
 		# read above to understand why .index is passed in url_for()
 		return redirect(url_for('.index'))
 	return render_template('index.html', form=form, name=session.get('name'), known=session.get('known', False))
+	"""
